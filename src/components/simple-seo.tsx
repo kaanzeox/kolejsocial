@@ -2,7 +2,7 @@ import React from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-export const SEO = ({ title = "burbir" }: { title?: string }) => {
+export const SEO = ({ title = "Kolejsocial" }: { title?: string }) => {
   const { asPath } = useRouter();
   return (
     <Head>
@@ -11,7 +11,7 @@ export const SEO = ({ title = "burbir" }: { title?: string }) => {
 
       <meta property="og:url" content="https://burungbiru.vercel.app" />
       <meta property="og:type" content="website" />
-      <meta property="og:title" content="burbir" />
+      <meta property="og:title" content="Kolejsocial" />
       <meta
         property="og:description"
         content="twitter clone build with t3 stack"
