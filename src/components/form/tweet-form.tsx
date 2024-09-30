@@ -157,7 +157,7 @@ const CreateTweet = ({
             )}
           >
             <span className="flex h-6 w-fit cursor-not-allowed items-center rounded-full px-3 font-sans text-[15px] font-semibold leading-5 text-primary transition-colors duration-200 ease-out hover:bg-primary/10">
-              <GlobeIcon className="mr-1" /> Everyone can reply
+              <MdOutlineAnnouncement className="mr-1" /> The university administration can see what you write and take action on an inappropriate post.
             </span>
           </div>
           <hr className={cn(variant === "default" ? "ml-12" : "ml-0")} />
