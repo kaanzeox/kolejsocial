@@ -7,21 +7,16 @@ import { useMediaQuery } from "usehooks-ts";
 import { SEO } from "~/components/simple-seo";
 import { useInView } from "react-intersection-observer";
 import { LoadingItem, LoadingPage } from "~/components/loading";
-import { PageLayout, Feed } from "~/components/layouts";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Bell, MessageCircle, Search, Users } from "lucide-react";
+import { BurgerMenu, PageLayout, Feed } from "~/components/layouts";
 
-const LazyForm = dynamic(() => import("~/components/form/post-form"));
+const LazyForm = dynamic(() => import("~/components/form/tweet-form"));
 
 const Home: NextPage = () => {
-  const { isLoaded, user } = useUser();
+  const { isLoaded } = useUser();
   const ctx = api.useUtils();
-  const showMobileMenu = useMediaQuery("(max-width: 768px)");
+  const showBurgerMenu = useMediaQuery("(max-width: 570px)");
 
-  if (!isLoaded) return <LoadingPage />;
+  if (!isLoaded) <LoadingPage />;
 
   const { ref, inView } = useInView({
     rootMargin: "40% 0px",
@@ -44,83 +39,41 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <SEO title="Ana Sayfa | Üniversite Sosyal" />
-      <PageLayout className="flex bg-gradient-to-b from-primary/10 to-background">
-        <div className="flex w-full max-w-4xl flex-shrink flex-col mx-auto">
-          <Card className="mb-6">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-primary">Hoş Geldin, {user?.firstName}!</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex items-center space-x-4">
-                <Input placeholder="Üniversite hayatınızda neler oluyor?" className="flex-grow" />
-                <Button>Paylaş</Button>
-              </div>
-            </CardContent>
-          </Card>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="md:col-span-2">
-              <Tabs defaultValue="herkes" className="w-full">
-                <TabsList className="w-full mb-6">
-                  <TabsTrigger value="herkes" className="flex-1">Herkes</TabsTrigger>
-                  <TabsTrigger value="arkadaslar" className="flex-1">Arkadaşlar</TabsTrigger>
-                  <TabsTrigger value="fakulte" className="flex-1">Fakülte</TabsTrigger>
-                </TabsList>
-                <TabsContent value="herkes">
-                  <Feed
-                    post={data?.pages.flatMap((page) => page.posts)}
-                    postLoading={postLoading}
-                  />
-                  {inView && isFetchingNextPage && <LoadingItem />}
-                  {hasNextPage && !isFetchingNextPage && <div ref={ref}></div>}
-                </TabsContent>
-                <TabsContent value="arkadaslar">Arkadaş gönderileri burada görünecek</TabsContent>
-                <TabsContent value="fakulte">Fakülte gönderileri burada görünecek</TabsContent>
-              </Tabs>
-            </div>
-            
-            <div className="space-y-6">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg font-semibold">Kampüs Etkinlikleri</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2">
-                    <li>Bahar Şenliği - 15 Mayıs</li>
-                    <li>Kariyer Günleri - 20-22 Mayıs</li>
-                    <li>Mezuniyet Töreni - 30 Haziran</li>
-                  </ul>
-                </CardContent>
-              </Card>
-              
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg font-semibold">Hızlı Erişim</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid grid-cols-2 gap-4">
-                    <Button variant="outline" className="w-full">
-                      <Bell className="mr-2 h-4 w-4" />
-                      Duyurular
-                    </Button>
-                    <Button variant="outline" className="w-full">
-                      <MessageCircle className="mr-2 h-4 w-4" />
-                      Mesajlar
-                    </Button>
-                    <Button variant="outline" className="w-full">
-                      <Users className="mr-2 h-4 w-4" />
-                      Gruplar
-                    </Button>
-                    <Button variant="outline" className="w-full">
-                      <Search className="mr-2 h-4 w-4" />
-                      Arama
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+      <SEO title="Home | Kolejsocial" />
+      <PageLayout className="flex">
+        <div className="flex w-full max-w-[600px] flex-shrink flex-col border-x border-border">
+          {showBurgerMenu && <BurgerMenu />}
+          <div className="sticky top-0 z-[25] h-auto w-full border-b border-border bg-background/[.65] backdrop-blur-md">
+            <div className="flex h-[53px] items-center">
+              <button
+                type="button"
+                className="relative flex h-full w-full flex-1 items-center justify-center px-4 font-semibold hover:cursor-pointer"
+                onClick={() => ctx.post.timeline.invalidate()}
+              >
+                <div className="relative flex h-full w-fit items-center">
+                  For You
+                  <span className="absolute -left-0.5 bottom-0 h-1 w-[108%] rounded-md bg-primary" />
+                </div>
+              </button>
+              <button
+                type="button"
+                className="relative flex h-full w-full flex-1 items-center justify-center px-4 font-medium text-accent hover:cursor-pointer"
+              >
+                Following
+              </button>
             </div>
           </div>
+          {!showBurgerMenu && (
+            <div className="hidden border-b border-border min-[570px]:flex">
+              <LazyForm />
+            </div>
+          )}
+          <Feed
+            post={data?.pages.flatMap((page) => page.posts)}
+            postLoading={postLoading}
+          />
+          {inView && isFetchingNextPage && <LoadingItem />}
+          {hasNextPage && !isFetchingNextPage && <div ref={ref}></div>}
         </div>
       </PageLayout>
     </>
