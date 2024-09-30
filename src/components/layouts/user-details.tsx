@@ -92,7 +92,7 @@ export const UserDetails = ({ user }: UserDetail) => {
                   <Badge variant={user.type} />
                   <span>
                     {user.type === "developer" &&
-                      "This account is verified because it's an official organization on burbir."}
+                      "This account is verified because it's an official organization on Kolejsocial."}
                     {user.type === "verified" && "This account is verified."}
                   </span>
                 </p>

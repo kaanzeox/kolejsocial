@@ -39,7 +39,7 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <SEO title="Home / burbir" />
+      <SEO title="Home | Kolejsocial" />
       <PageLayout className="flex">
         <div className="flex w-full max-w-[600px] flex-shrink flex-col border-x border-border">
           {showBurgerMenu && <BurgerMenu />}

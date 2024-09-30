@@ -39,7 +39,7 @@ const ProfilePage: NextPage<{ username: string }> = ({ username }) => {
   return (
     <UserLayout
       user={user}
-      title={`Media Posts by ${user?.name} (@${user?.username}) / burbir`}
+      title={`Media Posts by ${user?.name} (@${user?.username}) | Kolejsocial`}
       topbar={
         <p className="text-[13px] font-thin leading-4 text-accent">
           {userMediaLoading ? (

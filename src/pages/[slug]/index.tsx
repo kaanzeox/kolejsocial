@@ -33,7 +33,7 @@ const ProfilePage: NextPage<{ username: string }> = ({ username }) => {
   return (
     <UserLayout
       user={user}
-      title={`${user?.name} (@${user?.username}) / burbir`}
+      title={`${user?.name} (@${user?.username}) | Kolejsocial`}
     >
       <Feed
         post={posts?.pages.flatMap((page) => page.posts)}

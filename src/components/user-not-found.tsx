@@ -7,7 +7,7 @@ import { SEO } from "./simple-seo";
 const UserNotFound = ({ username }: { username: string }) => {
   return (
     <>
-      <SEO title="Profile / burbir" />
+      <SEO title="Profile | Kolejsocial" />
       <PageLayout className="flex">
         <div className="flex h-full w-full max-w-[600px] flex-col border-x border-border">
           <div className="sticky top-0 z-20 flex h-auto w-full items-center bg-background/[.65] px-4 font-semibold backdrop-blur-md">

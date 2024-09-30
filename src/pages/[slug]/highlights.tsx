@@ -15,7 +15,7 @@ const ProfilePageReplies: NextPage<{ username: string }> = ({ username }) => {
   return (
     <UserLayout
       user={user}
-      title={`${user?.name} (@${user?.username}) / burbir`}
+      title={`${user?.name} (@${user?.username}) | Kolejsocial`}
     >
       <div className="mx-auto my-8 flex w-full max-w-[calc(5*80px)] flex-col items-center px-8">
         <div className="w-full">

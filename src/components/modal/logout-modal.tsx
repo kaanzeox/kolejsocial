@@ -36,7 +36,7 @@ export const LogoutModal = ({ children }: { children: ReactNode }) => {
         <DialogHeader className="relative w-full space-y-0">
           <BsTwitterX className="mb-4 h-9 w-full text-3xl" />
           <DialogTitle className="!mb-2 w-full text-xl font-semibold tracking-normal">
-            Log out of burbir?
+            Log out of Kolejsocial?
           </DialogTitle>
           <DialogDescription asChild>
             <div className="flex flex-col gap-6">

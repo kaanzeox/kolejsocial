@@ -20,7 +20,7 @@ const Bookmarks = () => {
 
   return (
     <>
-      <SEO title={`Bookmarks / burbir`} />
+      <SEO title={`Bookmarks | Kolejsocial`} />
       <PageLayout className="flex">
         <div className="flex h-full min-h-screen w-full max-w-[600px] flex-col border-x border-border">
           <div className="sticky top-0 z-[25] flex h-auto w-full items-center bg-background/[.65] px-4 font-semibold backdrop-blur-md">

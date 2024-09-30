@@ -54,7 +54,7 @@ const SinglePostPage = ({
 
   return (
     <>
-      <SEO title={`${author.username} on burbir: "${post.content}" / burbir`} />
+      <SEO title={`${author.username} on Kolejsocial: "${post.content}" | Kolejsocial`} />
       <PageLayout className="flex">
         <div className="flex h-full min-h-screen w-full max-w-[600px] flex-col border-x border-border">
           <div className="sticky top-0 z-20 flex h-[53px] w-full items-center bg-background/[.65] px-4 font-semibold backdrop-blur-md">

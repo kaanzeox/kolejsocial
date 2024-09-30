@@ -19,7 +19,7 @@ const ProfilePageReplies: NextPage<{ username: string }> = ({ username }) => {
   return (
     <UserLayout
       user={user}
-      title={`Post with replies by ${user?.name} (@${user?.username}) / burbir`}
+      title={`Post with replies by ${user?.name} (@${user?.username}) | Kolejsocial`}
     >
       {isLoading ? (
         <div className="flex h-20 items-center justify-center">
